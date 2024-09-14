@@ -1,0 +1,284 @@
+:root {
+  --body-color: #18152e;
+  --box-color: #ffff;
+  --box-menu-color: #ffff;
+  --font-color: #070707;
+  --font2-color: #575757;
+  --shadow-color: rgba(0, 0, 0, 0.75);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  background: var(--body-color);
+}
+
+.wrapper {
+  justify-content: center;
+  margin: 50px;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, 265px);
+}
+
+.wrapper li {
+  height: 250px;
+  background: var(--box-color);
+  color: var(--font-color);
+  border-radius: 8px;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.add-box,
+.icon,
+.bottom-content,
+.settings .menu li,
+.content header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-box {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-box .icon {
+  cursor: pointer;
+  justify-content: center;
+  width: 95px;
+  height: 95px;
+  border-radius: 50px;
+  border: 3px dashed var(--body-color);
+  font-size: 2rem;
+}
+
+.add-box p {
+  margin-top: 20px;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.wrapper .note {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note p {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.note span {
+  display: block;
+  margin-top: 5px;
+  font-size: 1rem;
+  color: var(--font2-color);
+}
+.note .bottom-content {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+.bottom-content .settings i {
+  cursor: pointer;
+}
+.settings {
+  position: relative;
+}
+.settings .menu li {
+  height: 25px;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.menu li:hover {
+  background: var(--box-menu-color);
+}
+.settings .menu {
+  background: var(--box-menu-color);
+  box-shadow: 0 0 6px var(--shadow-color);
+  position: absolute;
+  right: -5px;
+  bottom: 0px;
+  transform: scale(0);
+  border-radius: 4px;
+  justify-self: flex-start;
+  padding: 0.3rem 0;
+  transition: transform 0.2s ease;
+}
+.settings:hover .menu {
+  transform: scale(1);
+}
+.menu li > i {
+  padding-right: 0.3rem;
+}
+
+.popup-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.popup-box.show {
+  display: block;
+  pointer-events: initial;
+}
+
+.popup-box .popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 400px;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+.popup .content {
+  background: var(--box-color);
+  border-radius: 5px;
+  width: calc(100% - 15px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.popup .content header {
+  padding: 0.95rem 1.25rem;
+  border-bottom: 1px solid var(--font2-color);
+}
+.content header p {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.content header i {
+  color: #8d8989;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.popup .content form {
+  margin: 15px 25px 35px;
+  padding-bottom: 1.25rem;
+}
+.content form .row {
+  margin-bottom: 20px;
+}
+form .row label {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 6px;
+}
+form :where(input, textarea) {
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  padding: 0 15px;
+  border-radius: 4px;
+  border: 1px solid #999;
+}
+form :where(input, textarea):focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.11);
+}
+form .row textarea {
+  height: 150px;
+  resize: none;
+  padding: 8px 15px;
+}
+form button {
+  width: 100%;
+  height: 50px;
+  color: #fff;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  border-radius: 4px;
+  background: var(--body-color);
+}
+/* #fff #333*/
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background: #282828;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+}
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadeIn 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 660px) {
+  .wrapper {
+    margin: 15px;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
+  .popup-box .popup {
+    max-width: calc(100% - 15px);
+  }
+  .bottom-content .settings i {
+    font-size: 17px;
+  }
+}

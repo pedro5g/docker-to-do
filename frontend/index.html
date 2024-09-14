@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+
+    <script src="./public/js/script.js" defer></script>
+    <title>todo app</title>
+  </head>
+  <body>
+    <div class="popup-box">
+      <div class="popup">
+        <div class="content">
+          <header>
+            <p>Add new node ?</p>
+            <i class="fa-solid fa-xmark"></i>
+          </header>
+          <form action="/">
+            <div class="row title">
+              <label>Title</label>
+              <input type="text" />
+            </div>
+            <div class="row description">
+              <label>Description</label>
+              <textarea spellcheck="false"></textarea>
+            </div>
+            <button>Addend task</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <li class="add-box">
+        <div class="icon"><i class="fa-solid fa-plus"></i></div>
+        <p>Add new note</p>
+      </li>
+      <!-- <li class="note">
+        <div class="details">
+          <p>Here is the title</p>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum atque
+            dolor minus inventore necessitatibus suscipit repudiandae ullam
+            voluptatem consectetur quod dicta exercitationem sequi, nulla labore
+            laboriosam odio! Ratione, quod placeat!
+          </span>
+        </div> 
+        <div class="bottom-content">
+          <span>13 ago, 2023</span>
+          <div class="settings">
+            <i class="fa-solid fa-ellipsis"></i>
+            <ul class="menu">
+              <li><i class="fa-solid fa-pen"></i>Edit</li>
+              <li><i class="fa-solid fa-trash-can"></i>Delete</li>
+            </ul>
+          </div>
+        </div>
+      </li>-->
+    </div>
+    <div id="snackbar">Some text some message..</div>
+  </body>
+</html>

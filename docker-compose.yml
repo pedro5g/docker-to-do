@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  db:
+    image: "bitnami/mysql:latest"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - ${MYSQL_DATABASE_PORT:-3306}:3306
+    volumes:
+      - "db:/bitnami/mysql/data"
+    networks:
+      - mysql-network
+  app:
+    build: .
+    environment:
+      PORT: ${PORT}
+      MYSQL_HOST: db
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    command: npm run start
+    working_dir: /app/backend
+    volumes:
+      - .:/node/app
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - mysql-network
+
+networks:
+  mysql-network:
+
+volumes:
+  db:
+    driver: local
+## run docker compose up --build
+## docker-compose down

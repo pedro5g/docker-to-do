@@ -12,3 +12,5 @@ Crie um arquivo `.env` na raiz do projeto com as variáveis necessárias
    ```bash
    docker compose up --build
    ```
+
+![Screenshot do App](site-image.png)
